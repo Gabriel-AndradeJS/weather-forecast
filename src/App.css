@@ -1,0 +1,33 @@
+body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #87ceeb;
+}
+
+.container{
+  text-align: center;
+
+  h1{
+    color: #0979b0;
+    text-transform: uppercase;
+  }
+
+  input {
+    width: 50%;
+    max-width: 250px;
+    border-radius: 10px 0 0 10px;
+    padding: 3px 10px;
+    outline: none;
+    font-size: .9rem;
+    border-color: transparent;
+  }
+
+  button{
+    border: transparent;
+    padding: 5px 10px;
+    border-radius: 0px 10px 10px 0;
+    background: #2572e8;
+    cursor: pointer;
+  }
+}
