@@ -4,7 +4,6 @@ import React from "react";
 import "./InfoWeather.css";
 
 const InfoWeather = ({ forecastNow }) => {
-
   return (
     <div className="content">
       <div className="forecastNow-info">

@@ -3,22 +3,35 @@ import "./App.css";
 import InfoWeather from "./components/InfoWeather/InfoWeather";
 import axios from "axios";
 import InfoWeather5Days from "./components/InfoWeather5Days/InfoWeather5Days";
+import nuvem from './assets/pngtree-cartoon-hand-drawn-creative-rain-cloud-png-image_1736551.jpg';
 
 function App() {
   const [forecastNow, setForecastNow] = useState(null);
   const [forecast5Days, setForecast5Days] = useState(null);
+  const [cityNot, setCityNot] = useState(null);
   const city = React.useRef();
   const key = "2e67d73f82b6ee1166d64df4cd5eaa8a";
 
   async function serachForecast() {
-    const resultNow = await axios.get(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city.current.value}&appid=${key}&lang=pt_br&units=metric`
-    );
-    const result5Days = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city.current.value}&appid=${key}&lang=pt_br&units=metric`)
-    setForecastNow(resultNow.data);
-    setForecast5Days(result5Days.data);
+    try {
+      const resultNow = await axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city.current.value}&appid=${key}&lang=pt_br&units=metric`
+      );
+      const result5Days = await axios.get(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${city.current.value}&appid=${key}&lang=pt_br&units=metric`
+      );
+      setForecastNow(resultNow.data);
+      setForecast5Days(result5Days.data);
+    } catch (erro) {
+      console.log(erro.response.statusText);
+      setCityNot(erro.response.statusText);
+    }
   }
 
+  if (cityNot) return <div className="content-notFound"> 
+    <img  />
+    <h1 className="not-found">{ cityNot }!!</h1>
+    </div>;
   return (
     <div>
       <div className="container">
@@ -34,7 +47,7 @@ function App() {
       <div>
         {forecastNow && <InfoWeather forecastNow={forecastNow} />}
         {forecast5Days && <InfoWeather5Days forecast5Days={forecast5Days} />}
-        </div>
+      </div>
     </div>
   );
 }
