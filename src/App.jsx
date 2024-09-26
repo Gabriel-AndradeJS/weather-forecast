@@ -3,7 +3,6 @@ import "./App.css";
 import InfoWeather from "./components/InfoWeather/InfoWeather";
 import axios from "axios";
 import InfoWeather5Days from "./components/InfoWeather5Days/InfoWeather5Days";
-import nuvem from './assets/pngtree-cartoon-hand-drawn-creative-rain-cloud-png-image_1736551.jpg';
 
 function App() {
   const [forecastNow, setForecastNow] = useState(null);
@@ -12,7 +11,7 @@ function App() {
   const city = React.useRef();
   const key = "2e67d73f82b6ee1166d64df4cd5eaa8a";
 
-  async function serachForecast() {
+  async function searchForecast() {
     try {
       const resultNow = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?q=${city.current.value}&appid=${key}&lang=pt_br&units=metric`
@@ -41,7 +40,7 @@ function App() {
           type="text"
           placeholder="Digite o nome da cidade ou/país"
         />
-        <button onClick={serachForecast}>Buscar</button>
+        <button onClick={searchForecast}>Buscar</button>
       </div>
 
       <div>

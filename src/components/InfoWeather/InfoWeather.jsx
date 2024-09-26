@@ -18,7 +18,7 @@ const InfoWeather = ({ forecastNow }) => {
         <div className="other-info">
           <p>Sensação térmica: {Math.round(forecastNow.main.feels_like)} ºC</p>
           <p>Umidade: {Math.round(forecastNow.main.humidity)} ºC</p>
-          <p>Pressão: {Math.round(forecastNow.main.pressure)} ºC</p>
+          <p>Pressão: {Math.round(forecastNow.main.pressure)}</p>
         </div>
       </div>
     </div>
